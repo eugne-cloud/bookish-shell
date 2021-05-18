@@ -1,0 +1,48 @@
+//Before installing a LAMP server, as a System Administrator is always a good practice to run an UPDATE commands as below
+
+$sudo dnf -y update
+$sudo dnf -y install vim bash-completion curl wget telnet
+
+//The default mode for SELINUX is enforcing as shown in Figure 2. To run the commands type
+
+$sudo setenforce 0
+$sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+
+//And to disable it type
+
+$sudo sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config
+$sudo dnf -y install httpd
+
+//Type sudo commands as sudo allows you to make changes and also allows you to download packages into the local host as it acts as a root user.
+
+$sudo vim /etc/httpd/conf/httpd.conf
+
+//Set the command using vim commands and edit the vim text file using cursor. Follow the following requirements.
+
+$ServerAdmin admin@example.com
+$ServerName  example.com
+$ServerTokens Prod
+
+//Enables http and httpd services when have firewall running 
+
+$sudo systemctl start httpd
+$sudo systemctl enable httpd
+
+//Installing php extensions
+
+$sudo dnf -y install php php-cli php-php-gettext php-mbstring php-mcrypt php-mysqlnd php-pear php-curl php-gd php-xml php-bcmath php-zip
+
+//Confirm your php version by typing $php -v
+//Install MariaDB server type $sudo dnf install mariadb-sever
+
+//Set the character to UTF-8 using the vim commands 
+
+$sudo vim /etc/my.cnf.d/mariadb-server.cnf
+
+//Testing the LAMP Stack installation progress.
+$sudo vim /var/www/html/phpinfo.php
+ADD 
+<?php
+// Show all information, defaults to INFO_ALL
+phpinfo();
+?>
