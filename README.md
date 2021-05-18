@@ -1,2 +1,2 @@
-# bookish-shell
-Installation of "Lamp" installation into Linux server 
+# Bookish-Shell
+Installation of "Lamp" installation into Linux server.
